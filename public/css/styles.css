@@ -1,0 +1,137 @@
+@font-face {
+    font-family: "SourceSansPro";
+    src: url("../fonts/SourceSansPro-Light.otf");
+    font-weight: lighter;
+}
+
+
+/*Color sceme:
+black: #222
+white: #fff
+accent: #FF4136
+*/
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+    color: #222;
+    font-family: "SourceSansPro";
+    min-width: 300px;
+}
+
+.header {
+    background: #222;
+    color: #fff
+}
+.logo {
+    padding-top: 5px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.logo img {
+    height: 50px;
+    max-width: 100%;
+}
+
+.search {
+  padding-top: 10px;
+}
+
+.navigation {
+    padding-top: 20px;
+    text-align: center;
+    font-size: 16pt;
+}
+.navigation div {
+  height: 34px;
+}
+.link a {
+  color: #a7a7a7;
+  text-decoration: none;
+  display: block;
+}
+.link .ellipse {
+  fill: #a7a7a7;
+}
+.active {
+  border-bottom: 2px solid #FF4136;
+}
+.active a {
+  color: #fff;
+}
+.link.active .ellipse {
+  fill: #fff;
+}
+.link :hover {
+  color: #a55656;
+}
+.link :hover .ellipse {
+  fill: #a55656;
+}
+.link.active :hover {
+  color: #fff;
+}
+.link.active :hover .ellipse {
+  fill: #fff;
+}
+
+
+/*.active {
+      border-bottom: 2px solid red;
+}
+.navigation a {
+    color: #a7a7a7;
+    text-decoration: none;
+    display: block;
+}
+.link .active a {
+    color: #fff;
+}
+.navigation :hover a {
+  color: #a55656;
+}
+.navigation :hover .ellipse {
+  fill: #a55656;
+}
+
+.active :hover  a {
+  color: #fff;
+}
+.navigation .active :hover .ellipse {
+  fill: #fff;
+}
+.ellipse {
+  fill: #a7a7a7;
+}
+.active .ellipse {
+  fill: #fff;
+}*/
+
+.nav-icon {
+  width: 23px;
+  height: 20px;
+}
+svg:not(:root){
+  overflow: visible;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
