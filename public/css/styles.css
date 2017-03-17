@@ -26,6 +26,8 @@ body {
     color: #222;
     font-family: "SourceSansPro";
     min-width: 300px;
+    position: relative;
+    min-height: 100%;
 }
 
 .header {
@@ -86,37 +88,6 @@ body {
   fill: #fff;
 }
 
-
-/*.active {
-      border-bottom: 2px solid red;
-}
-.navigation a {
-    color: #a7a7a7;
-    text-decoration: none;
-    display: block;
-}
-.link .active a {
-    color: #fff;
-}
-.navigation :hover a {
-  color: #a55656;
-}
-.navigation :hover .ellipse {
-  fill: #a55656;
-}
-
-.active :hover  a {
-  color: #fff;
-}
-.navigation .active :hover .ellipse {
-  fill: #fff;
-}
-.ellipse {
-  fill: #a7a7a7;
-}
-.active .ellipse {
-  fill: #fff;
-}*/
 
 .nav-icon {
   width: 23px;
