@@ -122,11 +122,13 @@ svg:not(:root) {
 }
 
 .content {
+    width: 100%
     max-width: 800px;
+    display: block;
 }
 
 .sidebar {
-    background: rgb(228, 58, 69);
+    background: #ef5350;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     margin-top: 20px;
 }

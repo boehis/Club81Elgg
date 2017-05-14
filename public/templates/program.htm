@@ -1,1 +1,17 @@
-Diese Seite ist noch im Aufbau.
+<h2>Programm</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Datum</th>
+      <th>Beschreibung</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng:repeat="p in program" class={{p.tag}}>
+       <td>{{p.date | date}}</td>
+       <td>{{p.description}}</td>
+       <td>{{p.details}}</td></tr>
+  </tbody>
+</table>
