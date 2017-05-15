@@ -1,17 +1,24 @@
-<h2>Programm</h2>
+<div>
+    <h1>Jahresprogramm</h1>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Datum</th>
-      <th>Beschreibung</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng:repeat="p in program" class={{p.tag}}>
-       <td>{{p.date | date}}</td>
-       <td>{{p.description}}</td>
-       <td>{{p.details}}</td></tr>
-  </tbody>
-</table>
+    <a ng-click="pastElements()">{{link}}</a>
+
+    <div ng:repeat="(year,program) in program" >
+        <table class="table table-hover table-responsive">
+            <h5>{{year}}</h5>
+            <thead>
+            <tr>
+                <th>Datum</th>
+                <th>Beschreibung</th>
+                <th>Details</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng:repeat="p in program" class={{p.tag}}>
+                <td>{{p.date | date}}</td>
+                <td>{{p.description}}</td>
+                <td>{{p.details}}</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>

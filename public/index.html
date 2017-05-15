@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de-CH">
+<html ng-app="myApp" lang="de-CH">
 <head>
 
     <!-- DEV-mode
@@ -13,7 +13,6 @@
     <script src="dev-lib/angular.min.js"></script> -->
 
 
-
     <!--     ________       __       ____  ___   ________             -->
     <!--    / ____/ /__  __/ /_     ( __ )<  /  / ____/ /____ _____ _ -->
     <!--   / /   / // / / / __ \   / __  |/ /  / __/ / // __ `/ __ `/ -->
@@ -21,7 +20,7 @@
     <!--  \____/_/ \__,_/_.___/   \____//_/  /_____/_/ \__, /\__, /   -->
     <!--                                              /____//____/    -->
     <!--                                                              -->
-    <!--            Thanks for looking at our source code!            -->
+    <!--           Wow much source code, such interesting!            -->
 
     <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -39,129 +38,156 @@
     <!-- CSS
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200i,300">
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
-
-    <!-- Scripts
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-    <script src="https://use.fontawesome.com/bfc9ae64e6.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/index.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
 
     <!-- Favicon
  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="icon" href="images/favicon.png">
 
 
-
 </head>
-<body ng-app="myApp">
-    <div>
-        <div class="beta label-warning">
-            <div class="container">
-                Diese Webseite ist noch in der beta Phase
-            </div>
-        </div>
-        <div class="header container">
-            <!--logo / title /search bar-->
-            <div class="row title">
-                <div class="col-xs-3 col-md-9">
-                    <div class="row">
-                      <a href="/" class="no-link-style">
-                        <div class="col-xs-12 col-md-2 logo">
-                            <img src="images/logo_white.png" alt="Club 81 Logo" />
-                        </div>
-                        <h1 class="col-md-10 hidden-xs hidden-sm">Club 81 Elgg - <i>More than a Club</i></h1>
-                      </a>
-                    </div>
-                </div>
-                <div class="col-xs-9 col-md-3 search">
-                    <input class="hidden-xs pull-right form-control" type="text" placeholder="Suchen" name="srch-field" id="srch-field">
-                    <button class="hidden-sm hidden-md hidden-lg pull-right btn" type="button">
-                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                    </button>
-
-                </div>
-            </div>
-            <!--menu items-->
-            <div class="row navigation">
-                <div class="col-xs-3 link">
-                    <a href="#/">
-                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg">
-                         <g>
-                          <ellipse class="ellipse" stroke="#000" ry="11.475539" rx="11.475538" id="svg_1" cy="11.502114" cx="11.528079" stroke-opacity="null" stroke-width="0" fill="#ffffff"></ellipse>
-                          <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="16" id="svg_2" y="17.04948" x="5.726563" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000">C</text>
-                         </g>
-                        </svg>
-                        <span class="hidden-xs hidden-sm">
-                          Über uns
-                        </span>
-                    </a>
-                </div>
-                <div class="col-xs-3 link">
-                    <a href="#/program">
-                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                        <span class="hidden-xs hidden-sm">
-                          Programm
-                        </span>
-                    </a>
-                </div>
-                <div class="col-xs-3 link">
-                    <a href="#/join">
-                        <i class="fa fa-user-plus" aria-hidden="true"></i>
-                        <span class="hidden-xs hidden-sm">
-                          Mitglied werden
-                        </span>
-                    </a>
-                </div>
-                <div class="col-xs-3 link">
-                    <a href="#/people">
-                        <i class="fa fa-address-card" aria-hidden="true"></i>
-                        <span class="hidden-xs hidden-sm">
-                          Personen
-                        </span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- Body -->
+<body class="">
+<div>
+    <div class="beta label-warning">
         <div class="container">
-            <div class="row">
-                <div ng-view class="col-sm-12 col-md-9 col-lg-8 content">
-                </div>
-                <div class="side-bar col-sm-12 col-md-3 col-lg-4 sidebar">
-                  <p>
-                    <h4>Wir sind jeden Freitag ab 20 Uhr für Deinen besuch geöffnet!
-                    Schnapp dir deine Freunde und schau vorbei!</h4>
-                    <h4><a href="https://www.facebook.com/club81elgg/">Follow us on Facebook</a></h4>
-                  </p>
-                </div>
-            </div>
+            Diese Webseite ist noch in der beta Phase
         </div>
+    </div>
+    <div id="header" class="header container full">
+        <!--logo / title-->
+        <div class="row title">
+            <a href="/" class="no-link-style">
+                <div class="col-md-2 hidden-xs hidden-sm logo">
+                    <img src="images/logo_white.png" alt="Club 81 Logo"/>
+                </div>
+                <h1 class="col-xs-12 col-md-8">Club 81 Elgg - <i class="nowrap">More than a Club</i></h1>
+            </a>
+        </div>
+        <div id="title-coverimage" class="coverimage"></div>
+    </div>
 
-        <!-- Footer -->
-        <div class="container footer">
-            © 2017 Club 81 Elgg.
-            <a href="https://github.com/boehis/Club81Elgg">GitHub</a>
+    <!--menu -->
+    <div id="navigation" class="navigation">
+        <div class="col-xs-3 link">
+            <a href="#/">
+                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <ellipse class="ellipse" stroke="#000" ry="11.475539" rx="11.475538" id="svg_1" cy="11.502114"
+                                 cx="11.528079" stroke-opacity="null" stroke-width="0" fill="#ffffff"></ellipse>
+                        <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="16" id="svg_2" y="17.04948" x="5.726563" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000">C</text>
+                    </g>
+                </svg>
+                <span class="hidden-xs hidden-sm">
+                  Über uns
+                </span>
+            </a>
+        </div>
+        <div class="col-xs-3 link">
+            <a href="#/program">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                <span class="hidden-xs hidden-sm">
+                  Programm
+                </span>
+            </a>
+        </div>
+        <div class="col-xs-3 link">
+            <a href="#/join">
+                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                <span class="hidden-xs hidden-sm">
+                  Mitglied werden
+                </span>
+            </a>
+        </div>
+        <div class="col-xs-3 link">
+            <a href="#/people">
+                <i class="fa fa-address-card" aria-hidden="true"></i>
+                <span class="hidden-xs hidden-sm">
+                  Personen
+                </span>
+            </a>
         </div>
     </div>
 
 
-    <!-- Google Analytics -->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    <div class="container">
+        <div class="row">
+            <div ng-view id="content" class="col-sm-12 col-md-9 col-lg-8 content">
+            </div>
+            <div class="side-bar col-sm-12 col-md-3 col-lg-4 sidebar">
+                <h4>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                Öffnungszeiten:<br>
+                                Jeden Freitag ab 8 Uhr
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="https://www.facebook.com/club81elgg/">Follow us on Facebook</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="">Die Statuten werden bald verfügbar sein</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="/admin">Seite bearbeiten - Admin</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </h4>
+            </div>
+        </div>
+    </div>
 
-      ga('create', 'UA-93905269-1', 'auto');
-      ga('send', 'pageview');
-    </script>
+    <!-- Footer -->
+    <div class="container footer">
+        © 2017 Club 81 Elgg.
+        <a href="https://github.com/boehis/Club81Elgg">GitHub</a>
+    </div>
+</div>
+
+
+<!-- Scripts
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+<script src="https://use.fontawesome.com/bfc9ae64e6.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/index.js"></script>
+<!-- Google Analytics -->
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-93905269-1', 'auto');
+    ga('send', 'pageview');
+</script>
 </body>
 </html>

@@ -1,14 +1,18 @@
-$(document).ready(function() {
+"use strict";
 
-    
-    function switchActive() {
-        for (link of links) {
-            if (link == this) {
-                link.classList.add("active")
-            } else {
-                link.classList.remove("active")
-            }
-        }
+$(document).ready(function () {
+
+    var navigation = document.getElementById("navigation");
+    var header = document.getElementById("header");
+    var fixed = false;
+
+    document.onscroll = function () {
+    if (!fixed && navigation.getBoundingClientRect().top <= 0) {
+        document.body.classList.add("fixed");
+        fixed = true
+    } else if (fixed && header.getBoundingClientRect().bottom > 53) {
+        document.body.classList.remove("fixed");
+        fixed = false
     }
-
-})
+};
+});

@@ -1,14 +1,8 @@
 [
     {
-        "date": "2017-01-01",
-        "description": "GV",
-        "details": "obligatorisch",
-        "tag": "highlight"
-    },
-    {
-        "date": "2017-05-12",
-        "description": "test",
-        "details": "wow",
-        "tag": "bg-success"
+        "date": "2017-05-15",
+        "description": "Wird bald ergänzt",
+        "details": "keine",
+        "tag": "none"
     }
 ]
