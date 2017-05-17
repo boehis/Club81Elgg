@@ -11,13 +11,16 @@
                 <th>Datum</th>
                 <th>Beschreibung</th>
                 <th>Details</th>
+                <th>Kategorie</th>
             </tr>
             </thead>
             <tbody>
             <tr ng:repeat="p in program" class={{p.tag}}>
                 <td>{{p.date | date}}</td>
                 <td>{{p.description}}</td>
-                <td>{{p.details}}</td></tr>
+                <td>{{p.details}}</td>
+                <td>{{p.cat}}</td>
+              </tr>
             </tbody>
         </table>
     </div>

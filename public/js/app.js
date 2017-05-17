@@ -44,10 +44,18 @@
                     "private": "bg-danger",
                     "none": ""
                 };
+                var category = {
+                    "highlight": "Highlight",
+                    "compulsory": "Obligatorisch",
+                    "public": "Öffentlich",
+                    "private": "Privat",
+                    "none": "Mitglieder"
+                };
 
                 for (var i=0; i < response.data.length; i++) {
                     var item = response.data[i];
                     item.date = new Date(item.date);
+                    item.cat = category[item.tag];
                     item.tag = colors[item.tag];
                 }
 
