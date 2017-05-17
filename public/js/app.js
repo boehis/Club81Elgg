@@ -137,6 +137,9 @@
     }
 
     function splitPastElements(array, date) {
+		if(!array){
+            return [[],[]]
+        }
         if (array[0].date >= date) {
             return [[], array]
         } else {

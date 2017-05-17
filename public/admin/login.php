@@ -31,13 +31,12 @@
 
        <!-- Favicon
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-       <link rel="icon" href="images/favicon.png">
+       <link rel="icon" href="../images/favicon.png">
 
    </head>
 
    <body>
 
-	 <!--Inspired by https://bootsnipp.com/snippets/featured/simple-login-form-bootsnipp-style-colorgraph -->  
      <div class = "container">
          <div class="wrapper">
              <form class="form-signin" role = "form" action = "index.php" method = "post">

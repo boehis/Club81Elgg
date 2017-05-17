@@ -5,7 +5,44 @@ date_default_timezone_set("Europe/Zurich");
 ?>
 <html lang="en">
 <head>
+
+    <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="UTF-8">
+    <title>Club 81</title>
+    <meta name="author" content="Simon Böhi">
+    <meta name="robots" content="noindex">
+
+    <!-- Setup Metas
+ –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200i,300">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <link rel="stylesheet" type="text/css" href="index.css"/>
+
+    <!-- Favicon
+ –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="icon" href="../images/favicon.png">
+
+    <!-- Scripts
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="app.js"></script>
 </head>
+<body ng-app="admin" ng-controller="controller" class="container">
 <?php
 if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
 
@@ -29,73 +66,99 @@ if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['passw
     } else {
         $_SESSION['timeout'] = time();
     }
-    echo "loged in";
-    if (isset($_POST['savefile']) && !empty($_POST['program'])) {
-        file_put_contents("program.json", $_POST['program']);
-        echo "saved";
-    } else if (isset($_POST['save']) &&
-        !empty($_POST['date']) &&
-        !empty($_POST['description']) &&
-        !empty($_POST['details']) &&
-        !empty($_POST['tag'])
-    ) {
-        $file = file_get_contents("program.json");
-        $json = json_decode($file, true);
-
-        $rawInput = '{
-           "date": "' . $_POST['date'] . '",
-           "description": "' . $_POST['description'] . '",
-           "details": "' . $_POST['details'] . '",
-           "tag": "' . $_POST['tag'] . '"
-         }';
-        $newJson = json_decode($rawInput, true);
-        array_push($json, $newJson);
-        file_put_contents("program.json", json_encode($json, JSON_PRETTY_PRINT));
-
-        echo "saved";
-    }
 } else {
     header("Location: /admin/login.php");
 }
 ?>
 <form role="form" action="logout.php" method="post">
-    <button type="submit" name="logout">Logout</button>
+    <button class="btn btn-default" type="submit" name="logout">Logout</button>
 </form>
-<form role="form" action="" method="post">
-    <input type="date" name="date" value="<?php echo date("Y-m-d") ?>" required></br>
-    <input type="text" name="description" placeholder="description" required></br>
-    <input type="text" name="details" placeholder="details" required></br>
-    <select name="tag" required>
-        <option value="none">None</option>
-        <option value="highlight">Highlight</option>
-        <option value="compulsory">Compulsory</option>
-        <option value="public">Public</option>
-        <option value="private">Private</option>
-    </select>
-    <button type="submit" name="save">Save</button>
-</form>
-<form role="form" action="" method="post" onsubmit="return parseJSON()">
-    <textarea id="program" name="program"
-              style="margin: 0px; width: 80%; height: 300px;"><?php echo file_get_contents("program.json") ?></textarea>
-    <button type="submit" name="savefile">Save</button>
-</form>
-<p id="parseError">
-</p>
-
 <a href="/">Home</a>
 
-<script>
-    function parseJSON() {
-        var text = document.getElementById('program').value;
-        try {
-            JSON.parse(text);
-        } catch (e) {
-            document.getElementById("parseError").innerHTML = e;
-            return false;
-        }
-        return true;
-    }
+<hr>
 
-</script>
+<h2>Add Event</h2>
+<form role="form" action="save.php" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="date">Date:</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="date" type="date" name="date" value="<?php echo date("Y-m-d") ?>" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="description">Description:</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="description" type="text" name="description" placeholder="description"
+                   required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="details">Details:</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="details" type="text" name="details" placeholder="details" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="tag">Tag:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="tag" name="tag" required>
+                <option value="none">None</option>
+                <option value="highlight">Highlight</option>
+                <option value="compulsory">Compulsory</option>
+                <option value="public">Public</option>
+                <option value="private">Private</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" name="save" class="btn btn-default">Save</button>
+        </div>
+    </div>
+</form>
+
+<hr>
+
+<h2>Edit Events</h2>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Datum</th>
+            <th>Beschreibung</th>
+            <th>Details</th>
+            <th>Tag</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng:repeat="p in program" class={{colors[p.tag]}}>
+            <td><input class="form-control" ng-model="p.date" type="date" name="date"></td>
+            <td><input class="form-control" ng-model="p.description" type="text" name="description">
+            </td>
+            <td><input class="form-control" ng-model="p.details" type="text" name="details"></td>
+            <td>
+                <select class="form-control" ng-model="p.tag" name="tag" required>
+                    <option value="none">None</option>
+                    <option value="highlight">Highlight</option>
+                    <option value="compulsory">Compulsory</option>
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                </select>
+            </td>
+            <td>
+                <button class="btn btn-danger" type="submit" name="update" value="delete" ng-click="program.splice($index, 1)">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-default" type="submit" ng-click="save()">Save</button>
+</div>
+
+
+<p ng-class="{'alert-danger' : error, 'alert-success' : !error}">{{message}}</p>
+
+<hr>
+
 </body>
 </html>
