@@ -1,4 +1,5 @@
 #!/bin/bash
 cd ..
-git fetch
+git fetch --all
+git reset --hard origin/master
 git pull
