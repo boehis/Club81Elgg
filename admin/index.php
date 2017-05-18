@@ -62,12 +62,12 @@ if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['passw
 
   $stmt->execute();
 
-  $result = $stmt->get_result();
+  $result = get_result($stmt);
 
-  if($result->num_rows != 1){
+  if(count($result) != 1){
       session_destroy();
       sleep(1);
-      if($result->num_rows == 0){
+      if(count($result) == 0){
         header("Location: /admin/login.php?error=401");
       }else {
         header("Location: /admin/login.php?error=409");
@@ -77,7 +77,7 @@ if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['passw
     $_SESSION['valid'] = true;
     $_SESSION['timeout'] = time();
     $_SESSION['username'] = $_POST['username'];
-    $_SESSION['role'] = $result->fetch_assoc()["role"];
+    $_SESSION['role'] = $result[0]["role"];
 
     echo 'You have entered valid use name and password';
   }
@@ -91,6 +91,22 @@ if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['passw
     }
 } else {
     header("Location: /admin/login.php");
+}
+
+
+function get_result( $Statement ) {
+    $RESULT = array();
+    $Statement->store_result();
+    for ( $i = 0; $i < $Statement->num_rows; $i++ ) {
+        $Metadata = $Statement->result_metadata();
+        $PARAMS = array();
+        while ( $Field = $Metadata->fetch_field() ) {
+            $PARAMS[] = &$RESULT[ $i ][ $Field->name ];
+        }
+        call_user_func_array( array( $Statement, 'bind_result' ), $PARAMS );
+        $Statement->fetch();
+    }
+    return $RESULT;
 }
 ?>
 <form role="form" action="logout.php" method="post">
