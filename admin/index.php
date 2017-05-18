@@ -46,18 +46,41 @@ date_default_timezone_set("Europe/Zurich");
 <?php
 if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
 
-    $pw_hash = "2bbe0c48b91a7d1b8a6753a8b9cbe1db16b84379f3f91fe115621284df7a48f1cd71e9beb90ea614c7bd924250aa9e446a866725e685a65df5d139a5cd180dc9";
-    if ($_POST['username'] == 'boehis' && hash('sha512', $_POST['password']) == $pw_hash) {
-        $_SESSION['valid'] = true;
-        $_SESSION['timeout'] = time();
-        $_SESSION['username'] = 'boehis';
+  $config = json_decode(file_get_contents("../config.json"), true);
+  $db = $config["db"];
+  // Create connection
+  $conn = new mysqli($db["url"], $db["username"], $db["password"]);
 
-        echo 'You have entered valid use name and password';
-    } else {
-        session_destroy();
-        sleep(1);
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+  echo "Connected successfully ";
+
+  $stmt = $conn->prepare('SELECT * FROM `club81`.`user` WHERE uname = ? AND passwd = ?');
+  $stmt->bind_param('ss', $_POST['username'], hash('sha512', $_POST['password']));
+
+  $stmt->execute();
+
+  $result = $stmt->get_result();
+
+  if($result->num_rows != 1){
+      session_destroy();
+      sleep(1);
+      if($result->num_rows == 0){
         header("Location: /admin/login.php?error=401");
-    }
+      }else {
+        header("Location: /admin/login.php?error=409");
+      }
+
+  } else {
+    $_SESSION['valid'] = true;
+    $_SESSION['timeout'] = time();
+    $_SESSION['username'] = $_POST['username'];
+    $_SESSION['role'] = $result->fetch_assoc()["role"];
+
+    echo 'You have entered valid use name and password';
+  }
 
 } else if (isset($_SESSION) && isset($_SESSION['valid']) && $_SESSION['valid'] == true) {
     if ($_SESSION['timeout'] + 30 * 60 < time()) {

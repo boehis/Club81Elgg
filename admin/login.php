@@ -44,13 +44,21 @@
                  <hr class="colorgraph"><br>
                  <?php
                  if (isset($_GET['error'])) {
-                     echo '<div class="alert alert-danger">';
-                     if($_GET['error'] == "401") {
-                         echo "Wrong Username and Password";
-                     } else if($_GET['error'] == "408") {
-                         echo "Request Timeout. Log in again.";
-                     }
-                     echo '</div>';
+                   echo '<div class="alert alert-danger">';
+                   switch ($_GET['error']) {
+                        case "401":
+                            echo "Wrong Username and Password";
+                            break;
+                        case "408":
+                            echo "Request Timeout. Log in again.";
+                            break;
+                        case "409":
+                            echo "Request Timeout. Log in again.";
+                            break;
+                        default:
+                            echo "Error: " . $_GET['error'] ;
+                    }
+                    echo '</div>';
                  }
                  ?>
                  <input type="text" class="form-control" name = "username" placeholder = "username" required autofocus />
