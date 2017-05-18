@@ -1,0 +1,9 @@
+{
+  "db": {
+    "club81": {
+      "url": "http",
+      "username": "uname",
+      "password": "pw"
+    }
+  }
+}
