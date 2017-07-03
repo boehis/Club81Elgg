@@ -2,17 +2,6 @@
 <html ng-app="myApp" lang="de-CH">
 <head>
 
-    <!-- DEV-mode
-–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <!-- <link rel="stylesheet" href="dev-lib/normalize.css" />
-    <link rel="stylesheet" href="dev-lib/bootstrap.min.css" />
-    <link rel="stylesheet" href="dev-lib/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="dev-lib/font-awesome/css/font-awesome.css" />
-    <script src="dev-lib/jquery-3.1.1.min.js"></script>
-    <script src="dev-lib/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="dev-lib/angular.min.js"></script> -->
-
-
     <!--     ________       __       ____  ___   ________             -->
     <!--    / ____/ /__  __/ /_     ( __ )<  /  / ____/ /____ _____ _ -->
     <!--   / /   / // / / / __ \   / __  |/ /  / __/ / // __ `/ __ `/ -->
@@ -50,7 +39,27 @@
  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="icon" href="images/favicon.png">
 
-
+    <!-- Page Specification (for google)
+ –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script type="application/ld+json">
+    {
+    "@context":"http://schema.org",
+    "@type":"Place",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "St. Gallerstrasse 40",
+        "addressRegion": "Elgg",
+        "addressCountry": "Switzerland"
+    },
+    "logo": "https://www.club81elgg.ch/images/logo.png",
+    "photo": "https://www.club81elgg.ch/images/coverimage.JPG",
+    "specialOpeningHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Friday",
+        "opens": "20:00:00"
+    }
+    }
+    </script>
 </head>
 <body class="">
 <div>
