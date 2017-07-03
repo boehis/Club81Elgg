@@ -22,7 +22,7 @@ if (isset($_SESSION) && isset($_SESSION['valid']) && $_SESSION['valid'] == true)
             $request = json_decode($postdata, true);
 
             file_put_contents("program.json",  json_encode($request['program'], JSON_PRETTY_PRINT));
-
+			echo shell_exec("sh ../../backup-program.sh");
 
             $arr = array ('success'=>true);
             echo json_encode($arr);
@@ -45,6 +45,7 @@ if (isset($_SESSION) && isset($_SESSION['valid']) && $_SESSION['valid'] == true)
                 $newJson = json_decode($rawInput, true);
                 array_push($json, $newJson);
                 file_put_contents("program.json", json_encode($json, JSON_PRETTY_PRINT));
+				echo shell_exec("sh ../../backup-program.sh");
 
                 header("Location: /admin/index.php");
             } else {
