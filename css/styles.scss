@@ -1,8 +1,15 @@
-/*Color sceme:
-black: #222
-white: #fff
-accent: #FF4136
-*/
+$color-black: #222;
+$color-white: #fff;
+$color-background: lightgray;
+$color-title: #D54A5C;
+$color-inactive: #a7a7a7;
+$color-active: #FF4136;
+$color-hover: #a55656;
+$color-sidebar: #D54A5C;
+$color-lightgray: #fefefe;
+$color-gray: #efefef;
+$font-main: 'Source Sans Pro', sans-serif;
+$font-text: 'Open Sans', sans-serif;
 
 html {
     height: 100%;
@@ -21,8 +28,8 @@ html,body
 }
 
 body {
-    color: #222;
-    font-family: 'Source Sans Pro', sans-serif;
+    color: $color-black;
+    font-family: $font-main;
     min-width: 300px;
     position: relative;
     min-height: 100%;
@@ -32,7 +39,7 @@ body {
     line-height: 1.6;
 }
 p {
-    font-family: 'Open Sans', sans-serif;
+    font-family: $font-text;
 }
 address {
     margin-bottom: 0
@@ -42,7 +49,7 @@ address {
     font-style: italic;
 }
 .beta {
-  background: lightgray;
+  background: $color-background;
 }
 .no-link-style {
     color: inherit;
@@ -61,7 +68,7 @@ address {
   border: none;
 }
 .header {
-    color: #D54A5C;
+    color: $color-title;
     font-weight: bold;
 }
 .full{
@@ -93,23 +100,25 @@ address {
     height: 34px;
 }
 
-.fixed .title {
-    margin-bottom: 55vh;
-}
-.fixed .coverimage {
-    position: fixed;
-    top: calc(-55vh + 54px);
-    width: 100%;
-    z-index: 99;
-}
+.fixed {
+  .title {
+      margin-bottom: 55vh;
+  }
+  .coverimage {
+      position: fixed;
+      top: calc(-55vh + 54px);
+      width: 100%;
+      z-index: 99;
+  }
 
-.fixed .navigation {
-    position: fixed;
-    top: 0;
-    margin: 0;
-    padding-top: 20px;
-    width: 100%;
-    z-index: 99;
+  .navigation {
+      position: fixed;
+      top: 0;
+      margin: 0;
+      padding-top: 20px;
+      width: 100%;
+      z-index: 99;
+  }
 }
 
 .logo {
@@ -130,42 +139,44 @@ address {
 
 
 
-.link a {
-    color: #a7a7a7;
-    text-decoration: none;
-    display: block;
-}
+.link {
+  a {
+      color: $color-inactive;
+      text-decoration: none;
+      display: block;
+  }
 
-.link .ellipse {
-    fill: #a7a7a7;
+  .ellipse {
+      fill: $color-inactive;
+  }
+
+  .active .ellipse {
+      fill: $color-white;
+  }
+
+  :hover {
+      color: $color-hover;
+  }
+
+  :hover .ellipse {
+      fill: $color-hover;
+  }
+
+  .active :hover {
+      color: $color-white;
+  }
+
+  .active :hover .ellipse {
+      fill: $color-white;
+  }
 }
 
 .active {
-    border-bottom: 2px solid #FF4136;
+    border-bottom: 2px solid $color-active;
 }
 
 .active a {
-    color: #fff;
-}
-
-.link.active .ellipse {
-    fill: #fff;
-}
-
-.link :hover {
-    color: #a55656;
-}
-
-.link :hover .ellipse {
-    fill: #a55656;
-}
-
-.link.active :hover {
-    color: #fff;
-}
-
-.link.active :hover .ellipse {
-    fill: #fff;
+    color: $color-white;
 }
 
 .nav-icon {
@@ -181,12 +192,12 @@ svg:not(:root) {
     min-height: 90vh;
 }
 .sidebar {
-    background: #D54A5C;
+    background: $color-sidebar;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     margin-top: 100px;
 }
 .sidebar a {
-  color: #fefefe;
+  color: $color-lightgray;
 }
 .side-bar>th,td{
     padding: 6px;
@@ -197,6 +208,6 @@ svg:not(:root) {
     bottom: 0;
     left: 0;
     padding: 1rem;
-    background-color: #efefef;
+    background-color: $color-gray;
     text-align: center;
 }
