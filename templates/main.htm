@@ -3,33 +3,32 @@
   <p class="empathise">
     Ein überblick über die letzten Events des Club 81.
   </p>
-  <div class="card col-xs-12">
+  <div ng-show="error" class="alert alert-danger">
+    <strong>Error!</strong> Die Events konnten nicht geladen werden.
+  </div>
+  <div ng:repeat="event in events" class="card col-xs-12">
     <div class="border-bottom-light row">
-      <!--Title-->
       <div class="col-xs-1 timeline-date">
         <div class="">
-          <h3>28</h3>
+          <h3>{{event.day}}</h3>
         </div>
         <div class="month">
-          <h5>Oct</h5>
+          <h5>{{event.month}}</h5>
         </div>
       </div>
       <div class="col-xs-11">
-        <h2>Halloween Party</h2>
+        <h2>{{event.title}}</h2>
       </div>
     </div>
     <div class="row card-content">
-      <!--Text-->
       <div class="col-xs-12 col-sm-9">
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-          sea tak
-        </p>
+        <p>{{event.text}}</p>
       </div>
-      <div class="col-xs-12 col-sm-3">
-        <a class="link" href="">
-          <img class="img-responsive hidden-xs" src="http://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero-00e10b1f.jpg"/>
-          zur Galerie
-        </a>
+      <div class="col-xs-12 col-sm-3" ng-show="event.hasGalery">
+        <a class="link" href="{{event.galeryLink}}">
+            <img class="img-responsive hidden-xs" ng-src="{{event.thumbnail}}"/>
+            zur Galerie
+          </a>
       </div>
     </div>
   </div>

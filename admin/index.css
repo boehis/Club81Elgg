@@ -1,3 +1,9 @@
 .bg-primary {
-    color: #000;
+  color: #000;
+}
+.card {
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+  background-color: #F5F5F5;
+  margin-bottom: 15px;
+  padding: 10px;
 }
