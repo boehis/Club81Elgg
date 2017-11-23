@@ -112,12 +112,15 @@ function get_result( $Statement ) {
 <form role="form" action="logout.php" method="post">
     <button class="btn btn-default" type="submit" name="logout">Logout</button>
 </form>
-<a href="/">Home</a>
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="timeline.php">Edit Timeline</a></li>
+</ul>
 
 <hr>
 
 <h2>Add Event</h2>
-<form role="form" action="save.php" method="post" class="form-horizontal">
+<form role="form" action="save.php?type=calendar" method="post" class="form-horizontal">
     <div class="form-group">
         <label class="control-label col-sm-2" for="date">Date:</label>
         <div class="col-sm-10">

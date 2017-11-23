@@ -8,7 +8,7 @@
       $routeProvider
         .when("/", {
           templateUrl: "templates/main.htm",
-          controller: 'PageController'
+          controller: 'TimelineController'
         })
         .when("/program", {
           templateUrl: "templates/program.htm",
@@ -28,6 +28,48 @@
     }])
     .controller('PageController', ['$scope', '$route', '$location', function($scope, $route, $location) {
       switchPage($location);
+    }])
+    .controller('TimelineController', ['$scope', '$route', '$location', '$http', function($scope, $route, $location, $http) {
+      switchPage($location);
+
+      $http({
+        method: 'GET',
+        url: '../admin/timeline.json'
+      }).then(function successCallback(response) {
+        var monthMap = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sept", "Okt", "Nov", "Dez"]
+
+        $scope.events = []
+
+        for (var i = 0; i < response.data.length; i++) {
+          var data = response.data[i]
+          var date = new Date(data.date)
+          var event = {}
+          event.day = date.getUTCDate()
+          event.month = monthMap[date.getUTCMonth()]
+          event.title = data.title
+          event.text = "Loading..."
+          event.hasGalery = data.galeryLink != "" && data.thumbnail != ""
+          event.galeryLink = data.galeryLink
+          event.thumbnail = data.thumbnail
+
+          function loadText(event) {
+            $http({
+              method: 'GET',
+              url: '../admin/timeline/'+data.text
+            }).then(function successCallback(response) {
+              event.text = response.data
+            }, function errorCallback(response) {
+              event.text = response.statusText;
+            });
+          }
+          loadText(event)
+
+          $scope.events.push(event)
+        }
+      }, function errorCallback(response) {
+        $scope.error = true;
+      });
+
     }])
     .controller('ProgramController', ['$scope', '$route', '$location', '$http', function($scope, $route, $location, $http) {
       switchPage($location);
