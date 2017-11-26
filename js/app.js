@@ -38,22 +38,32 @@
       }).then(function successCallback(response) {
         var monthMap = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sept", "Okt", "Nov", "Dez"]
 
-        $scope.events = []
+        var events = []
 
         for (var i = 0; i < response.data.length; i++) {
           var data = response.data[i]
           var date = new Date(data.date)
           var event = {}
+          event.date = date
           event.day = date.getUTCDate()
           event.month = monthMap[date.getUTCMonth()]
           event.title = data.title
           event.text = data.text
-          event.hasGalery = data.galeryLink != "" && data.thumbnail != ""
+          event.hasGalery = data.galeryLink && data.thumbnail | 1
           event.galeryLink = data.galeryLink
-          event.thumbnail = data.thumbnail
+          event.thumbnail = "/admin/timeline/thumbnails/"+data.thumbnail
 
-          $scope.events.push(event)
+          events.push(event)
         }
+        $scope.events = events.sort(function(a, b) {
+          console.log(a);
+          if (a.date < b.date)
+            return 1;
+          if (a.date > b.date)
+            return -1;
+          return 0;
+        });
+
       }, function errorCallback(response) {
         $scope.error = true;
       });
@@ -64,7 +74,7 @@
 
       $http({
         method: 'GET',
-        url: '../admin/program.json'
+        url: '../admin/program/program.json'
       }).then(function successCallback(response) {
 
         var colors = {

@@ -3,7 +3,7 @@
 (function () {
 
     angular.module("admin", [])
-        .controller('controller', function ($scope, $http) {
+        .controller('controller', ['$scope', '$http', function ($scope, $http) {
             $http({
                 method: 'GET',
                 url: 'program.json'
@@ -37,11 +37,11 @@
                             method: "post",
                             url: "save.php?ajax",
                             data: {
-                                "program": $scope.program,
-                                "savefile": ""
+                                "program": $scope.program
                             }
                         })
                             .then(function successCallback(response) {
+                              console.log(response);
                                 if(response.data.success){
                                     $scope.error = false;
                                     $scope.message = "Saved"
@@ -67,6 +67,6 @@
                 $scope.program = {};
                 $scope.colors = {};
             });
-        });
+        }]);
 
 })();

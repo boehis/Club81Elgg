@@ -1,28 +1,12 @@
 <?php
-ob_start();
-session_start();
-date_default_timezone_set("Europe/Zurich");
-
-
-if (isset($_SESSION) && isset($_SESSION['valid']) && $_SESSION['valid'] == true) {
-    if ($_SESSION['timeout'] + 30 * 60 < time()) {
-        session_destroy();
-        if (isset($_GET['ajax'])) {
-            $arr = array ('success'=>false, 'error' => 'Please log in');
-            echo json_encode($arr);
-        } else {
-            header("Location: /admin/login.php?error=408");
-        }
-
-    } else {
-        $_SESSION['timeout'] = time();
-
+include '../session.php';
+if($auth){
         if (isset($_GET['ajax'])) {
             $postdata = file_get_contents("php://input");
             $request = json_decode($postdata, true);
 
             file_put_contents("program.json",  json_encode($request['program'], JSON_PRETTY_PRINT));
-			echo shell_exec("sh ../../backup-program.sh");
+			      echo shell_exec("sh ../../backup-program.sh");
 
             $arr = array ('success'=>true);
             echo json_encode($arr);
@@ -45,22 +29,12 @@ if (isset($_SESSION) && isset($_SESSION['valid']) && $_SESSION['valid'] == true)
                 $newJson = json_decode($rawInput, true);
                 array_push($json, $newJson);
                 file_put_contents("program.json", json_encode($json, JSON_PRETTY_PRINT));
-				echo shell_exec("sh ../../backup-program.sh");
-
-                header("Location: /admin/index.php");
-            } else {
-                header("Location: /admin/index.php");
+				        echo shell_exec("sh ../../backup-program.sh");
 
             }
+            header("Location: program.php?");
         }
 
     }
-} else {
-    if (isset($_POST['ajax'])) {
-        $arr = array ('success'=>false, 'error' => 'Please log in');
-        echo json_encode($arr);
-    } else {
-        header("Location: /admin/login.php");
-    }
-}
+
 ?>
