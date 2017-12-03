@@ -12,7 +12,7 @@
 <body ng-app="timeline" ng-controller="controller" class="container">
   <h2><?= $mode ?'Edit':'Add'?> Timeline Entry</h2>
 
-  <form role="form" action="<?= $mode ?'update.php':'insert.php'?>" method="post" enctype="multipart/form-data" class="form-horizontal">
+  <form role="form" action="update.php" method="post" enctype="multipart/form-data" class="form-horizontal">
     <input type="hidden" name="index" value="<?=$index?>"/>
     <div class="form-group">
         <label class="control-label col-sm-2" for="date">Date</label>
