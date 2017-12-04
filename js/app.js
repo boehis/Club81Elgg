@@ -49,7 +49,6 @@
           event.month = monthMap[date.getUTCMonth()]
           event.title = data.title
           event.text = data.text
-          event.hasGalery = data.galeryLink && data.thumbnail | 1
           event.galeryLink = data.galeryLink
           event.thumbnail = "/admin/timeline/thumbnails/"+data.thumbnail
 

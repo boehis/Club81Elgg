@@ -17,7 +17,7 @@
           event.date = new Date(data.date)
           event.title = data.title
           event.text = data.text
-          event.hasGalery = data.galeryLink && data.thumbnail ? true : false
+          event.hasGalery = data.galeryLink || data.thumbnail ? true : false
           event.galeryLink = data.galeryLink
           event.thumbnail = "thumbnails/"+data.thumbnail
 

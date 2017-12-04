@@ -16,9 +16,11 @@ if ($auth) {
         $rawInput["title"] = normalize($_POST['title']);
         $rawInput["text"] = normalize($_POST['text']);
 
+        if(!empty($_POST['galeryLink'])){
+          $rawInput["galeryLink"] = normalize($_POST['galeryLink']);
+        }
         if (isset($_POST['checkbox']) &&
-        (!empty($_FILES["thumbnail"]["name"]) || $editMode)
-        && !empty($_POST['galeryLink'])) {
+        (!empty($_FILES["thumbnail"]["name"]) || $editMode)) {
             $filename = "";
             if(!$editMode || !isset($json[$_POST['index']]["thumbnail"]) || $json[$_POST['index']]["thumbnail"] == ""){
               $name_clean = strtolower(preg_replace('/\s*/', '', $_FILES["thumbnail"]["name"]));
@@ -39,7 +41,6 @@ if ($auth) {
                     move_uploaded_file($_FILES["thumbnail"]["tmp_name"], "thumbnails/" . $filename);
                 }
             }
-            $rawInput["galeryLink"] = normalize($_POST['galeryLink']);
             $rawInput["thumbnail"] = normalize($filename);
         }
         if (!$hasError) {
