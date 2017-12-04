@@ -6,7 +6,7 @@ if($auth){
             $request = json_decode($postdata, true);
 
             file_put_contents("program.json",  json_encode($request['program'], JSON_PRETTY_PRINT));
-			      echo shell_exec("sh ../../backup-program.sh");
+			      echo shell_exec("sh ../../../backup-program.sh");
 
             $arr = array ('success'=>true);
             echo json_encode($arr);
@@ -29,7 +29,7 @@ if($auth){
                 $newJson = json_decode($rawInput, true);
                 array_push($json, $newJson);
                 file_put_contents("program.json", json_encode($json, JSON_PRETTY_PRINT));
-				        echo shell_exec("sh ../../backup-program.sh");
+				        echo shell_exec("sh ../../../backup-program.sh");
 
             }
             header("Location: program.php?");

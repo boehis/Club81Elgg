@@ -57,12 +57,12 @@ if ($auth) {
                 array_push($json, $rawInput);
               }
             }
+            echo shell_exec("sh ../../../backup-timeline.sh");
             file_put_contents("timeline.json", json_encode($json, JSON_PRETTY_PRINT));
             header("Location: /admin/timeline/timeline.php?success=true");
         } else {
             header("Location: /admin/timeline/timeline.php?success=false&error=" . $error);
         }
-        //echo shell_exec("sh ../../backup-program.sh");
     } else {
         header("Location: /admin/timeline/timeline.php?success=false&error=400");
     }
