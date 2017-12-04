@@ -8,7 +8,7 @@
       $routeProvider
         .when("/", {
           templateUrl: "templates/main.htm",
-          controller: 'PageController'
+          controller: 'TimelineController'
         })
         .when("/program", {
           templateUrl: "templates/program.htm",
@@ -29,12 +29,51 @@
     .controller('PageController', ['$scope', '$route', '$location', function($scope, $route, $location) {
       switchPage($location);
     }])
+    .controller('TimelineController', ['$scope', '$route', '$location', '$http', function($scope, $route, $location, $http) {
+      switchPage($location);
+
+      $http({
+        method: 'GET',
+        url: '../admin/timeline/timeline.json'
+      }).then(function successCallback(response) {
+        var monthMap = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sept", "Okt", "Nov", "Dez"]
+
+        var events = []
+
+        for (var i = 0; i < response.data.length; i++) {
+          var data = response.data[i]
+          var date = new Date(data.date)
+          var event = {}
+          event.date = date
+          event.day = date.getUTCDate()
+          event.month = monthMap[date.getUTCMonth()]
+          event.title = data.title
+          event.text = data.text
+          event.galeryLink = data.galeryLink
+          event.thumbnail = "/admin/timeline/thumbnails/"+data.thumbnail
+
+          events.push(event)
+        }
+        $scope.events = events.sort(function(a, b) {
+          console.log(a);
+          if (a.date < b.date)
+            return 1;
+          if (a.date > b.date)
+            return -1;
+          return 0;
+        });
+
+      }, function errorCallback(response) {
+        $scope.error = true;
+      });
+
+    }])
     .controller('ProgramController', ['$scope', '$route', '$location', '$http', function($scope, $route, $location, $http) {
       switchPage($location);
 
       $http({
         method: 'GET',
-        url: '../admin/program.json'
+        url: '../admin/program/program.json'
       }).then(function successCallback(response) {
 
         var colors = {
