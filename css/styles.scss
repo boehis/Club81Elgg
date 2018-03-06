@@ -2,11 +2,12 @@ $color-black: #222;
 $color-white: #fff;
 $color-background: lightgray;
 $color-title: #D54A5C;
-$color-inactive: #a7a7a7;
+$color-inactive: #ebebeb;
 $color-active: #FF4136;
 $color-hover: #a55656;
 $color-sidebar: #D54A5C;
 $color-lightgray: #fafafa;
+$color-transparentgray: rgba(75,75,75,0.31);
 $color-gray: #efefef;
 $font-main: 'Source Sans Pro', sans-serif;
 $font-text: 'Open Sans', sans-serif;
@@ -94,7 +95,7 @@ address {
     height: 55vh;
     max-width: 1920px;
     margin: auto;
-    background: url(../images/coverimage-gradient.JPG) no-repeat center center;
+    background: url(../images/DSC_0042.jpg) no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -109,6 +110,9 @@ address {
 
 .navigation div {
     height: 34px;
+}
+.navigation > div:hover {
+    background: $color-transparentgray;
 }
 
 .fixed {
@@ -163,14 +167,6 @@ address {
 
   .active .ellipse {
       fill: $color-white;
-  }
-
-  :hover {
-      color: $color-hover;
-  }
-
-  :hover .ellipse {
-      fill: $color-hover;
   }
 
   .active :hover {
@@ -232,6 +228,15 @@ svg:not(:root) {
     margin-top: -5px;
   }
 
+}
+
+.person {
+  width: 200px;
+  height: 250px;
+}
+.person img {
+  width:  inherit;
+  height: inherit;
 }
 
 .footer {
